@@ -12,24 +12,20 @@ angular.module('starter.controllers', [])
 })
 
 .controller('AccountCtrl', function($scope) {
-});
+})
 
 
-.controller('LoginCtrl', function($scope) {
+.controller('LoginCtrl', function($scope, $state) {
+
   $scope.loginData = {};
 
-  var dataRef = new Firebase("https://ionic-firebase-login.firebaseio.com/");
-
-
   $scope.tryLogin = function() {
-    $scope.loginObj.$login('facebook').then(function(user) {
-      // The root scope event will trigger and navigate
-    }, function(error) {
-      // Show a form error here
-      console.error('Unable to login', error);
-    });
+  	console.log('here i am')
+    // if($scope.loginData.email !== '' && $scope.loginData.password !== ''){
+    	$state.go('tab.friends')
+    // }
   };
 })
 
 .controller('SignupCtrl', function($scope) {
-})
+});
