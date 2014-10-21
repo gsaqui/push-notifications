@@ -3,12 +3,14 @@ angular.module('starter.controllers', [])
 .controller('DashCtrl', function($scope) {
 })
 
-.controller('FriendsCtrl', function($scope, Friends) {
-  $scope.friends = Friends.all();
+.controller('GamesCtrl', function($scope, Games) {
+	console.log('Games GamesCtrl')
+	console.log(Games.all())
+  $scope.games = Games.all();
 })
 
-.controller('FriendDetailCtrl', function($scope, $stateParams, Friends) {
-  $scope.friend = Friends.get($stateParams.friendId);
+.controller('GameDetailCtrl', function($scope, $stateParams, Games) {
+  $scope.game = Games.get($stateParams.gameId);
 })
 
 .controller('AccountCtrl', function($scope) {
@@ -20,9 +22,8 @@ angular.module('starter.controllers', [])
   $scope.loginData = {};
 
   $scope.tryLogin = function() {
-  	console.log('here i am')
     // if($scope.loginData.email !== '' && $scope.loginData.password !== ''){
-    	$state.go('tab.friends')
+    	$state.go('tab.games')
     // }
   };
 })

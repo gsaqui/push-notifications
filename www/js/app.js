@@ -62,21 +62,21 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
 
-    .state('tab.friends', {
-      url: '/friends',
+    .state('tab.games', {
+      url: '/games',
       views: {
-        'tab-friends': {
-          templateUrl: 'templates/tab-friends.html',
-          controller: 'FriendsCtrl'
+        'tab-games': {
+          templateUrl: 'templates/tab-games.html',
+          controller: 'GamesCtrl'
         }
       }
     })
-    .state('tab.friend-detail', {
-      url: '/friend/:friendId',
+    .state('tab.game-detail', {
+      url: '/games/:gameId',
       views: {
-        'tab-friends': {
+        'tab-games': {
           templateUrl: 'templates/friend-detail.html',
-          controller: 'FriendDetailCtrl'
+          controller: 'GameDetailCtrl'
         }
       }
     })
