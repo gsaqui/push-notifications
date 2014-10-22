@@ -75,7 +75,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       url: '/games/:gameId',
       views: {
         'tab-games': {
-          templateUrl: 'templates/friend-detail.html',
+          templateUrl: 'templates/game-detail.html',
           controller: 'GameDetailCtrl'
         }
       }
