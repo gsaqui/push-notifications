@@ -1,49 +1,51 @@
 
 <ion-view title="{{game.name}}">
   <ion-content has-header="true" padding="true">
-  	<!-- <form ng-form=""> -->
-  	<div class="list">
-  		<label class="item item-input item-select">
-	    	<div class="input-label">
-	      		First team to score
-	    	</div>
-		    <select>
-		      <option>{{game.homeTeam}}</option>
-		      <option>{{game.awayTeam}}</option>
-		      <option>Neither</option>
-		    </select>
-	  </label>
+  	<form  novalidate> 
+	  	<div class="list">
+	  		<label class="item item-input item-select">
+		    	<div class="input-label">
+		      		First team to score
+		    	</div>
+			    <select>
+			      <option>{{game.homeTeam}}</option>
+			      <option>{{game.awayTeam}}</option>
+			      <option>Neither</option>
+			    </select>
+		  </label>
 
-	  <label class="item item-input item-select">
-	    	<div class="input-label">
-	      		Total Goals after 1st period
-	    	</div>
-		    <select>
-		      <option>+1.5</option>
-		      <option>-1.5</option>
-		    </select>
-	  </label>
-	  <label class="item item-input item-select">
-	    	<div class="input-label">
-	      		Total Goals after 2st period
-	    	</div>
-		    <select>
-		      <option>+2.5</option>
-		      <option>-2.5</option>
-		    </select>
-	  </label>
-	  <label class="item item-input item-select">
-	    	<div class="input-label">
-	      		Total Goals after 3st period
-	    	</div>
-		    <select>
-		      <option>+3.5</option>
-		      <option>-3.5</option>
-		    </select>
-	  </label>
-	</div>
-	<button class="button button-full button-positive">
-  		Let go play!
-	</button>
+		  <label class="item item-input item-select">
+		    	<div class="input-label">
+		      		Total Goals after 1st period
+		    	</div>
+			    <select ng-model="game.prop1">
+			      <option>+1.5</option>
+			      <option>-1.5</option>
+			    </select>
+		  </label>
+		  <label class="item item-input item-select">
+		    	<div class="input-label">
+		      		Total Goals after 2st period
+		    	</div>
+			    <select ng-model="game.prop2">
+			      <option>+2.5</option>
+			      <option>-2.5</option>
+			    </select>
+		  </label>
+		  <label class="item item-input item-select">
+		    	<div class="input-label">
+		      		Total Goals after 3st period
+		    	</div>
+			    <select ng-model="game.prop3">
+			      <option>+3.5</option>
+			      <option>-3.5</option>
+			    </select>
+		  </label>
+		</div>
+		{{game}}
+		<button type="submit" class="button button-full button-positive">
+	  		Let go play!
+		</button>
+	</form>
   </ion-content>
 </ion-view>

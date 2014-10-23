@@ -5,12 +5,16 @@ angular.module('starter.controllers', [])
 
 .controller('GamesCtrl', function($scope, Games) {
 	console.log('Games GamesCtrl')
-	console.log(Games.all())
-  $scope.games = Games.all();
+	
+  Games.all().then(function(data){
+    $scope.games = data.data.results;
+  });
 })
 
 .controller('GameDetailCtrl', function($scope, $stateParams, Games) {
-  $scope.game = Games.get($stateParams.gameId);
+  Games.get($stateParams.gameId).then(function(data){
+    $scope.game = data.data;  
+  });
 })
 
 .controller('AccountCtrl', function($scope) {
