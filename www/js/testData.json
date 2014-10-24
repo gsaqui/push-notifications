@@ -1,0 +1,162 @@
+[
+   {
+      "name": "Vancouver Canucks vs LA Kings",
+      "homeTeam": "LA Kings",
+      "awayTeam": "Vancouver Canucks",
+      "questions": [
+         {
+            "question": "Total Goals after 1st period",
+            "answers": [
+               {
+                  "title": "+1.5"
+               },
+               {
+                  "title": "-1.5"
+               }
+            ]
+         },
+         {
+            "question": "Total Goals after 2st period",
+            "answers": [
+               {
+                  "title": "+2.5"
+               },
+               {
+                  "title": "-2.5"
+               }
+            ]
+         },
+         {
+            "question": "Total Goals after 3st period",
+            "answers": [
+               {
+                  "title": "+3.5"
+               },
+               {
+                  "title": "-3.5"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "name": "Edmonton Oilers vs Calgary Flames",
+      "homeTeam": "Edmonton Oilers",
+      "awayTeam": "Calgary Flames",
+      "questions": [
+         {
+            "question": "Total Goals after 1st period",
+            "answers": [
+               {
+                  "title": "+1.5"
+               },
+               {
+                  "title": "-1.5"
+               }
+            ]
+         },
+         {
+            "question": "Total Goals after 2st period",
+            "answers": [
+               {
+                  "title": "+2.5"
+               },
+               {
+                  "title": "-2.5"
+               }
+            ]
+         },
+         {
+            "question": "Total Goals after 3st period",
+            "answers": [
+               {
+                  "title": "+3.5"
+               },
+               {
+                  "title": "-3.5"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "name": "Boston Bruins vs New York Islanders",
+      "homeTeam": "Boston Bruins",
+      "awayTeam": "New York Islanders",
+      "questions": [
+         {
+            "question": "Total Goals after 1st period",
+            "answers": [
+               {
+                  "title": "+1.5"
+               },
+               {
+                  "title": "-1.5"
+               }
+            ]
+         },
+         {
+            "question": "Total Goals after 2st period",
+            "answers": [
+               {
+                  "title": "+2.5"
+               },
+               {
+                  "title": "-2.5"
+               }
+            ]
+         },
+         {
+            "question": "Total Goals after 3st period",
+            "answers": [
+               {
+                  "title": "+3.5"
+               },
+               {
+                  "title": "-3.5"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "name": "Florida Panthers vs Detroit Red Wings",
+      "homeTeam": "Florida Panthers",
+      "awayTeam": "Detroit Red Wings",
+      "questions": [
+         {
+            "question": "Total Goals after 1st period",
+            "answers": [
+               {
+                  "title": "+1.5"
+               },
+               {
+                  "title": "-1.5"
+               }
+            ]
+         },
+         {
+            "question": "Total Goals after 2st period",
+            "answers": [
+               {
+                  "title": "+2.5"
+               },
+               {
+                  "title": "-2.5"
+               }
+            ]
+         },
+         {
+            "question": "Total Goals after 3st period",
+            "answers": [
+               {
+                  "title": "+3.5"
+               },
+               {
+                  "title": "-3.5"
+               }
+            ]
+         }
+      ]
+   }
+]

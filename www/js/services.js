@@ -7,13 +7,55 @@ angular.module('starter.services', [])
   // Might use a resource here that returns a JSON array
 
   // Some fake testing data
+var question1 = {    
+    question: "Will the Kings kill this penalty",
+    answers: [{
+      id: '321',
+      title: "Yes"
+    },
+    {
+      id: '99',
+      title: "No"
+    }]
+  }
+
+  var question2 = {    
+    question: "Total Goals after 1st period",
+    answers: [{
+      title: "+1.5"
+    },
+    {
+      title: "-1.5"
+    }]
+  }
+  var question3 = {    
+    question: "Total Goals after 2st period",
+    answers: [{
+      title: "+2.5"
+    },
+    {
+      title: "-2.5"
+    }]
+  }
+  var question4 = {    
+    question: "Total Goals after 3st period",
+    answers: [{
+      title: "+3.5"
+    },
+    {
+      title: "-3.5"
+    }]
+  }
+
+
   var games = [
-    { id: 0, name: 'Vancouver Canucks vs LA Kings', homeTeam: 'LA Kings', awayTeam: 'Vancouver Canucks' },
-    { id: 1, name: 'Edmonton Oilers vs Calgary Flames', homeTeam: 'Edmonton Oilers', awayTeam: 'Calgary Flames' },
-    { id: 2, name: 'Boston Bruins vs New York Islanders', homeTeam: 'Boston Bruins', awayTeam: 'New York Islanders' },
-    { id: 3, name: 'Florida Panthers vs Detroit Red Wings', homeTeam: 'Florida Panthers', awayTeam: "Detroit Red Wings" }
+    { name: 'Vancouver Canucks vs LA Kings', homeTeam: 'LA Kings', awayTeam: 'Vancouver Canucks', questions:[question2, question3, question4] },
+    { name: 'Edmonton Oilers vs Calgary Flames', homeTeam: 'Edmonton Oilers', awayTeam: 'Calgary Flames', questions:[question2, question3, question4] },
+    { name: 'Boston Bruins vs New York Islanders', homeTeam: 'Boston Bruins', awayTeam: 'New York Islanders', questions:[question2, question3, question4] },
+    { name: 'Florida Panthers vs Detroit Red Wings', homeTeam: 'Florida Panthers', awayTeam: "Detroit Red Wings", questions:[question2, question3, question4] }
   ];
 
+  
   return {
         all:function(){
             return $http.get('https://api.parse.com/1/classes/Game',{
