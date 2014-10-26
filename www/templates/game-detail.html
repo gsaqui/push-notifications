@@ -1,20 +1,21 @@
 
 <ion-view title="{{game.name}}">
   <ion-content has-header="true" padding="true">
-  	<form  novalidate> 
+  	<form  name="answerForm"> 
 	  	<div class="list">
 		  <label class="item item-input item-select" ng-repeat="question in game.questions">
 		    	<div class="input-label">
 		      		{{question.question}}
 		    	</div>
-			    <select ng-model="game.prop1">
-			      <option ng-repeat="answer in question.answers">{{answer.title}}</option>
+			    <select ng-model="answers[question.id]" ng-options="answer.title for answer in question.answers" required>
+			      
 			    </select>
 		  </label>
 
 		</div>
-		{{game}}
-		<button type="submit" class="button button-full button-positive">
+		
+		{{answers}}
+		<button ng-click="submitGameAnswers()" class="button button-full button-positive" ng-class="{'disabled': answerForm.$invalid}">
 	  		Let go play!
 		</button>
 	</form>

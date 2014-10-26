@@ -12,9 +12,19 @@ angular.module('starter.controllers', [])
 })
 
 .controller('GameDetailCtrl', function($scope, $stateParams, Games) {
+  $scope.answers = {
+    gameId : 0
+  };
+
   Games.get($stateParams.gameId).then(function(data){
+    $scope.answers.gameId = $stateParams.gameId
     $scope.game = data.data;  
   });
+
+  $scope.submitGameAnswers = function(){
+    //does this exist on the server yet for this user?
+    //if not we want to post else put
+  }
 })
 
 .controller('AccountCtrl', function($scope) {
