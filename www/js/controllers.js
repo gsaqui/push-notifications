@@ -6,8 +6,10 @@ angular.module('starter.controllers', [])
 .controller('GamesCtrl', function($scope, Games) {
 	console.log('Games GamesCtrl')
 	
+
   Games.all().then(function(data){
-    $scope.games = data.data.results;
+    console.log(data)
+    $scope.games = data;
   });
 })
 

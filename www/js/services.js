@@ -59,12 +59,34 @@ var question1 = {
   
   return {
         all:function(){
+
+
+                var Game = Parse.Object.extend("Game");
+                var query = new Parse.Query(Game)
+                query.notEqualTo("awayTeam", "test");
+                return query.find();
+                /*return query.find({
+                success: function(results) {
+                  console.log(results)
+                  // Do something with the returned Parse.Object values
+                  for (var i = 0; i < results.length; i++) { 
+                    var object = results[i];
+                    console.log(object.id + ' - ' + object.get('homeTeam'));
+                  }
+                },
+                error: function(error) {
+                  alert("Error: " + error.code + " " + error.message);
+                }
+              });
+*/
+/*
             return $http.get('https://api.parse.com/1/classes/Game',{
                 headers:{
                     'X-Parse-Application-Id': PARSE_CREDENTIALS.APP_ID,
                     'X-Parse-REST-API-Key':PARSE_CREDENTIALS.REST_API_KEY,
                 }
             });
+*/            
         },
         get:function(id){
             return $http.get('https://api.parse.com/1/classes/Game/'+id,{
