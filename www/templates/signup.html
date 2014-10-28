@@ -1,18 +1,18 @@
 <ion-view title="'Signup'">
   <ion-content has-header="true" has-tabs="true" padding="true">
-    <form ng-submit="trySignup()">
+    <form ng-submit="trySignup()" name="signup">
       <div class="list">
         <label class="item item-input">
-          <input type="text" placeholder="Name" ng-model="loginData.name">
+          <input type="text" placeholder="Name" ng-model="loginData.name" required>
         </label>
         <label class="item item-input">
-          <input type="text" placeholder="Email" ng-model="loginData.email">
+          <input type="text" placeholder="Email" ng-model="loginData.email" required>
         </label>
         <label class="item item-input">
-          <input type="password" placeholder="Password" ng-model="loginData.password">
+          <input type="password" placeholder="Password" ng-model="loginData.password" required>
         </label>
         <div>
-          <button class="button button-block button-positive" type="submit">Create account</button>
+          <button class="button button-block button-positive" ng-class="{'disabled': signup.$invalid}" type="submit">Create account</button>
         </div>
         <div style="text-align: center">
           Or <a ui-sref="login">Already have an account?</a>

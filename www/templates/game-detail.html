@@ -1,9 +1,9 @@
 
-<ion-view title="{{game.name}}">
+<ion-view title="{{game.get('name')}}">
   <ion-content has-header="true" padding="true">
   	<form  name="answerForm"> 
 	  	<div class="list">
-		  <label class="item item-input item-select" ng-repeat="question in game.questions">
+		  <label class="item item-input item-select" ng-repeat="question in game.get('questions')">
 		    	<div class="input-label">
 		      		{{question.question}}
 		    	</div>
