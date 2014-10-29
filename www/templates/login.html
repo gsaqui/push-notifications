@@ -1,4 +1,4 @@
-<ion-view title="'Login'" hide-back-button="true">
+<ion-view title="'Login'" hide-back-button="true" ng-init="isUserLoggedIn()">
   <ion-content has-header="true" has-tabs="true" padding="true">
     <form ng-submit="tryLogin()" ng-model="loginData">
       <div class="list">
@@ -12,7 +12,6 @@
         
         <div>
           <button class="button button-block button-positive" type="submit">Login</button>
-          <!-- <button class="button button-block button-positive" type="submit">Login with Facebook</button> -->
         </div>
         <div style="text-align: center">
           Or <a ui-sref="signup">Create an account</a>

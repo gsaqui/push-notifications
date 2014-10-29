@@ -1,4 +1,4 @@
-<ion-view title="Games">
+<ion-view title="Games" ng-init='loadData()'>
   <ion-content>
     <ion-list>
       <ion-item ng-repeat="game in games" type="item-text-wrap" href="#/tab/games/{{game.id}}">

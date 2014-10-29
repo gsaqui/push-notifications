@@ -3,29 +3,91 @@ angular.module('starter.controllers', [])
 .controller('DashCtrl', function($scope) {
 })
 
-.controller('GamesCtrl', function($scope, Games) {
-	console.log('Games GamesCtrl')
+.controller('GamesCtrl', function($scope, $ionicLoading, Games) {
 	
+	
+  $scope.show = function() {
+    $ionicLoading.show({
+      template: 'Loading...'
+    });
+  };
+  $scope.hide = function(){
+    $ionicLoading.hide();
+  };
 
-  Games.all().then(function(data){
-    $scope.games = data;
-  });
+  $scope.loadData = function(){
+    $scope.show();
+    Games.all().then(function(data){
+      $scope.games = data;
+      $scope.$apply();
+      $scope.hide();
+    });  
+  }
 })
 
-.controller('GameDetailCtrl', function($scope, $stateParams, Games) {
+.controller('GameDetailCtrl', function($scope, $stateParams, $ionicLoading, Games) {
   $scope.answers = {
     gameId : 0
   };
 
+  $ionicLoading.show({
+      template: 'Loading...'
+    });
   Games.get($stateParams.gameId).then(function(data){
-    console.log('data coming back', data.get('homeTeam'))
     $scope.answers.gameId = $stateParams.gameId
     $scope.game = data;  
+    $scope.$apply();
+    $ionicLoading.hide();
   });
 
   $scope.submitGameAnswers = function(){
     //does this exist on the server yet for this user?
     //if not we want to post else put
+    
+    angular.forEach($scope.answers, function(value, key) {
+      console.log(value, key);
+
+      console.log('key is ', key, "answer is", value)
+      if(key !== 'gameId'){
+        var UserAnswers = Parse.Object.extend("UserAnswers");
+        var myAnswers = new UserAnswers();
+            myAnswers.save({
+              gameId: $scope.answers.gameId,
+              questionId: key,
+              answerId: value.id,
+              userId: Parse.User.current().id
+            }, {
+              success: function(data) {
+                // The object was saved successfully.
+                console.log('successful save');
+              },
+              error: function(data, error) {
+                console.log('we haz error', data, error);
+                // The save failed.
+                // error is a Parse.Error with an error code and message.
+              }
+            });
+      }
+   });  
+     /*
+    myAnswers.save({
+      gameId: $scope.answers.gameId,
+      questionId: questionId,
+      answerId: $scope.answers[questionId],
+      userId: Parse.User.current().id
+    }, {
+      success: function(data) {
+        // The object was saved successfully.
+        console.log('successful save');
+      },
+      error: function(data, error) {
+        console.log('we haz error', data, error);
+        // The save failed.
+        // error is a Parse.Error with an error code and message.
+      }
+    });
+*/
+
   }
 })
 
@@ -70,6 +132,7 @@ angular.module('starter.controllers', [])
         $state.go('tab.games');
       },
       error: function(user, error) {
+        console.log(user, error)
         // Show the error message somewhere and let the user try again.
         alert("Error: " + error.code + " " + error.message);
       }
