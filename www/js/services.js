@@ -3,7 +3,7 @@ angular.module('starter.services', [])
 /**
  * A simple example service that returns some data.
  */
-.factory('Games', ['$http','PARSE_CREDENTIALS',function($http,PARSE_CREDENTIALS) {
+.factory('Games', ['$http', function($http) {
   // Might use a resource here that returns a JSON array
   
 
@@ -66,7 +66,6 @@ var question1 = {
                 
         },
         get:function(id){
-          console.log('our id is',id)
           var Game = Parse.Object.extend("Game");
           var query = new Parse.Query(Game);
           
@@ -100,7 +99,31 @@ var question1 = {
             });
         }
     }
-}]).value('PARSE_CREDENTIALS',{
-    APP_ID: '',
-    REST_API_KEY:''
-});
+}])
+
+.factory('UserAnswers', ['$http',function($http) {
+  return {
+      getAllForGameId: function(gameId){
+          var UserAnswers = Parse.Object.extend("UserAnswers");
+          var query = new Parse.Query(UserAnswers)
+          query.equalTo("gameId", gameId);
+          return query.find();
+      },
+      deleteAllForQuestionIdAndUserIdAndGameId: function(questionId, userId, gameId){
+        var UserAnswers = Parse.Object.extend("UserAnswers");
+          var query = new Parse.Query(UserAnswers)
+          query.equalTo("gameId", gameId);
+          query.equalTo("questionId", questionId);
+          query.equalTo('userId', userId);
+          var promise = query.find();
+          promise.then(function(data){ 
+            console.log('found some data', data.length)
+            angular.forEach(data,function(answer){
+              console.log(answer);
+              answer.destroy();
+            })
+          });
+          return promise;
+      }
+  }
+}])

@@ -25,21 +25,46 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('GameDetailCtrl', function($scope, $stateParams, $ionicLoading, Games) {
+.controller('GameDetailCtrl', function($scope, $stateParams, $ionicLoading, Games, UserAnswers) {
   $scope.answers = {
     gameId : 0
   };
 
-  $ionicLoading.show({
-      template: 'Loading...'
-    });
-  Games.get($stateParams.gameId).then(function(data){
-    $scope.answers.gameId = $stateParams.gameId
-    $scope.game = data;  
-    $scope.$apply();
-    $ionicLoading.hide();
-  });
+  $scope.loadGame = function(){
+    $ionicLoading.show({
+        template: 'Loading...'
+      });
+    Games.get($stateParams.gameId).then(function(data){
+      $scope.answers.gameId = $stateParams.gameId
+      $scope.game = data;  
+      
+      $ionicLoading.hide();
 
+      UserAnswers.getAllForGameId($stateParams.gameId).then(function(data){
+        console.log(data)
+
+        angular.forEach(data, function(value, key){
+          angular.forEach($scope.game.get('questions'), function(question, key){
+            if(value.get('questionId') == question.id){
+              $scope.answers[question.id] = question.answers[value.get('answerId')];  
+              angular.forEach(question.answers, function(answer){
+                if(answer.id == value.get('answerId')){
+                  $scope.answers[question.id] = answer;  
+                  answer.externalId = value.id;
+                }
+              })
+            }
+          })
+
+        })
+        $scope.$apply();
+        
+      })
+
+      
+    });
+  }
+  
   $scope.submitGameAnswers = function(){
     //does this exist on the server yet for this user?
     //if not we want to post else put
@@ -49,8 +74,11 @@ angular.module('starter.controllers', [])
 
       console.log('key is ', key, "answer is", value)
       if(key !== 'gameId'){
-        var UserAnswers = Parse.Object.extend("UserAnswers");
-        var myAnswers = new UserAnswers();
+        var Answers = Parse.Object.extend("UserAnswers");
+        var myAnswers = new Answers();
+        if(!angular.isDefined(value.externalId)){
+
+          UserAnswers.deleteAllForQuestionIdAndUserIdAndGameId(key, Parse.User.current().id, $scope.answers.gameId).then(function(){
             myAnswers.save({
               gameId: $scope.answers.gameId,
               questionId: key,
@@ -66,7 +94,9 @@ angular.module('starter.controllers', [])
                 // The save failed.
                 // error is a Parse.Error with an error code and message.
               }
-            });
+            });  
+          });
+        }
       }
    });  
      /*
